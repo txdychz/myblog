@@ -86,7 +86,7 @@
 <li>使用长连接的方式改善了 HTTP/1.0 短连接造成的性能开销。</li>
 <li>支持管道（pipeline）网络传输，只要第一个请求发出去了，不必等其回来，就可以发第二个请求出去，可以减少整体的响应时间。</li>
 </ul>
-<h4 id="但-http-1-1-还是有性能瓶颈" tabindex="-1"><a class="header-anchor" href="#但-http-1-1-还是有性能瓶颈" aria-hidden="true">#</a> 但 HTTP/1.1 还是有性能瓶颈:</h4>
+<h4 id="但-http-1-1-还是有性能瓶颈" tabindex="-1"><a class="header-anchor" href="#但-http-1-1-还是有性能瓶颈" aria-hidden="true">#</a> 但 HTTP/1.1 还是有性能瓶颈</h4>
 <ul>
 <li>请求 / 响应头部（Header）未经压缩就发送，首部信息越多延迟越大。只能压缩 <code v-pre>Body</code> 的部分；</li>
 <li>发送冗长的首部。每次互相发送相同的首部造成的浪费较多；</li>
@@ -94,17 +94,18 @@
 <li><strong>没有请求优先级控制</strong>；</li>
 <li>请求只能从客户端开始，服务器只能被动响应</li>
 </ul>
-<h4 id="那-http-2-相比-http-1-1-性能上的改进" tabindex="-1"><a class="header-anchor" href="#那-http-2-相比-http-1-1-性能上的改进" aria-hidden="true">#</a> 那 HTTP/2 相比 HTTP/1.1 性能上的改进:</h4>
+<h4 id="那-http-2-相比-http-1-1-性能上的改进" tabindex="-1"><a class="header-anchor" href="#那-http-2-相比-http-1-1-性能上的改进" aria-hidden="true">#</a> 那 HTTP/2 相比 HTTP/1.1 性能上的改进</h4>
 <ul>
 <li>头部压缩</li>
 <li>二进制格式</li>
 <li>并发传输</li>
 <li>服务器主动推送资源</li>
 </ul>
-<p><strong>TCP 和 UDP 应用场景：</strong></p>
+<h2 id="tcp-udp" tabindex="-1"><a class="header-anchor" href="#tcp-udp" aria-hidden="true">#</a> TCP UDP</h2>
+<h3 id="tcp-ip-协议" tabindex="-1"><a class="header-anchor" href="#tcp-ip-协议" aria-hidden="true">#</a> tcp/ip 协议</h3>
 <p>由于 TCP 是面向连接，能保证数据的可靠性交付，因此经常用于：</p>
 <ul>
-<li><code v-pre>FTP</code> 文件传输；</li>
+<li>FTP 文件传输；</li>
 <li>HTTP / HTTPS；</li>
 </ul>
 <p>由于 UDP 面向无连接，它可以随时发送数据，再加上 UDP 本身的处理既简单又高效，因此经常用于：</p>
@@ -115,6 +116,14 @@
 </ul>
 <h3 id="三次握手" tabindex="-1"><a class="header-anchor" href="#三次握手" aria-hidden="true">#</a> 三次握手</h3>
 <p>TCP 使用三次握手建立连接的<strong>最主要原因就是防止「历史连接」初始化了连接</strong>。</p>
+<h2 id="网络安全" tabindex="-1"><a class="header-anchor" href="#网络安全" aria-hidden="true">#</a> 网络安全</h2>
+<h3 id="xss-攻击" tabindex="-1"><a class="header-anchor" href="#xss-攻击" aria-hidden="true">#</a> XSS 攻击</h3>
+<p>跨站脚本攻击，发生在目标用户的浏览器，渲染 DOM 树的过程成发生了不在预期内执行的 JS 代码。</p>
+<h3 id="csrf-攻击" tabindex="-1"><a class="header-anchor" href="#csrf-攻击" aria-hidden="true">#</a> CSRF 攻击</h3>
+<p>跨站请求伪造
+利用用户身份，执行非用户本意的操作
+eg：
+有一个网站 a 和恶意网站 b，用户点击了恶意网站的链接，在恶意网站中动态生成了 img、iframe、script 标签，使 src 为</p>
 </div></template>
 
 

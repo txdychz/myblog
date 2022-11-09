@@ -8,7 +8,7 @@ export default defineUserConfig({
     navbar: [
       {
         link: '/',
-        text: '阅读笔记',
+        text: '计算机网络',
       },
       {
         link: '/vue',
@@ -25,6 +25,19 @@ export default defineUserConfig({
       {
         link: '/webpack',
         text: 'webpack笔记',
+      },
+      {
+        link: '/js',
+        text: 'ECMA',
+      },
+      {
+        text: '阅读时光',
+        children: [
+          '/book/你不知道上.md',
+          '/book/你不知道中.md',
+          '/book/你不知道下.md',
+          '/book/js红宝书.md',
+        ],
       },
     ],
   }),
