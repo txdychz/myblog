@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        #dc = 888
+        #aa
+        constructor(arg) {
+          console.log(this.#aa)
+          console.log(this.#dc)
+          this.dc = arg
+        }
+      }
+
+      const p1 = new Person(666)
+      const p2 = new Person()
+      console.log(p1['#dc'])
+      console.log(p2['#dc'])
+    </script>
+  </body>
+</html>

@@ -11,8 +11,14 @@ export default defineUserConfig({
         text: '计算机网络',
       },
       {
-        link: '/vue',
         text: 'vue笔记',
+        children: [
+          '/vue/Vue2.md',
+          '/vue/Vue3.md',
+          '/vue/Vuex.md',
+          '/vue/VueRouter.md',
+          '/vue/Pinia.md',
+        ],
       },
       {
         link: '/react',
@@ -27,8 +33,12 @@ export default defineUserConfig({
         text: 'webpack笔记',
       },
       {
-        link: '/js',
+        link: '/ts',
+        text: 'typeScript',
+      },
+      {
         text: 'ECMA',
+        children: ['/js/es5.md', '/js/es6.md', '/js/module.md'],
       },
       {
         text: '阅读时光',
@@ -38,6 +48,10 @@ export default defineUserConfig({
           '/book/你不知道下.md',
           '/book/js红宝书.md',
         ],
+      },
+      {
+        link: '/designPattern',
+        text: '设计模式',
       },
     ],
   }),

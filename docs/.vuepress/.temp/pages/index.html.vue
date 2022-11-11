@@ -5,16 +5,23 @@
 <h3 id="post" tabindex="-1"><a class="header-anchor" href="#post" aria-hidden="true">#</a> <strong>post</strong></h3>
 <p>新增或提交数据，是不幂等的，会修改服务器资源，浏览器不会主动缓存 post 请求</p>
 <p>get 请求可以带 body，post 可以带查询字符串，用法是一样的。get 其实也可以用于删除服务器数据，一切都看后端</p>
+<p>get 和 post 在实现上没有什么区别，都是基于 tcp 协议，但是在 htpt 上 get 可以做的事情，post 也可以做
+只是为了实现互联网规范，get 请求在实现上</p>
 <h2 id="缓存" tabindex="-1"><a class="header-anchor" href="#缓存" aria-hidden="true">#</a> 缓存</h2>
 <h3 id="强缓存" tabindex="-1"><a class="header-anchor" href="#强缓存" aria-hidden="true">#</a> 强缓存</h3>
-<p>强缓存指的是只要浏览器判断缓存没有过期，则直接使用浏览器的本地缓存，决定是否使用缓存的主动性在于浏览器这边。</p>
-<p>强缓存是利用下面这两个 HTTP 响应头部（Response Header）字段实现的，它们都用来表示资源在客户端缓存的有效期：</p>
+<p>状态码 200 是强缓存</p>
+<p>强缓存指的是只要<strong>浏览器判断</strong>缓存没有过期，则直接使用浏览器的本地缓存，决定是否使用缓存的主动性在于浏览器这边。
+在第一次请求服务器数据时，服务器返回数据，在响应头中添加 Cache-Control 或 Expires 字段，浏览器接受到以后把这两个字段和该域名绑定保存在浏览器本地
+第二次请求时，浏览器会在浏览器本地查找该域名的 cache-control 字段，判断发请求的时间和 cache-control 字段中的时间做对比。</p>
+<p>强缓存是利用两个 HTTP 响应头部（Response Header）字段实现的，它们都用来表示资源在客户端缓存的有效期：</p>
 <ul>
 <li><code v-pre>Cache-Control</code>， 是一个相对时间；</li>
 <li><code v-pre>Expires</code>，是一个绝对时间；</li>
 </ul>
 <p>如果 HTTP 响应头部同时有 Cache-Control 和 Expires 字段的话，<strong>Cache-Control 的优先级高于 Expires</strong> 。</p>
 <h3 id="协商缓存" tabindex="-1"><a class="header-anchor" href="#协商缓存" aria-hidden="true">#</a> 协商缓存</h3>
+<p>协商缓存是<strong>服务器</strong>判断的
+响应码为 304</p>
 <p>第一种：请求头部中的 <code v-pre>If-Modified-Since</code> 字段与响应头部中的 <code v-pre>Last-Modified</code> 字段实现，这两个字段的意思是：</p>
 <ul>
 <li>响应头部中的 <code v-pre>Last-Modified</code>：标示这个响应资源的最后修改时间；</li>
@@ -51,6 +58,28 @@
 </li>
 </ul>
 <h2 id="http-与-https" tabindex="-1"><a class="header-anchor" href="#http-与-https" aria-hidden="true">#</a> HTTP 与 HTTPS</h2>
+<h3 id="http" tabindex="-1"><a class="header-anchor" href="#http" aria-hidden="true">#</a> Http</h3>
+<h3 id="常见的-http-状态码" tabindex="-1"><a class="header-anchor" href="#常见的-http-状态码" aria-hidden="true">#</a> 常见的 http 状态码</h3>
+<ol>
+<li>
+<p>200:成功，并携带数据</p>
+</li>
+<li>
+<p>204:成功但没有 body 数据</p>
+</li>
+<li>
+<p>301:表示永久重定向，表示资源不存在</p>
+</li>
+<li>
+<p>302:表示临时重定向 ，资源还存在，但需要另一个 url 去访问</p>
+</li>
+<li>
+<p>304:（not modify） 表示资源未修改，命中协商缓存，直接使用缓存中的数据</p>
+</li>
+<li>
+<p>401：表示没有用户标识，需要用户登录</p>
+</li>
+</ol>
 <h3 id="http-与-https-有哪些区别" tabindex="-1"><a class="header-anchor" href="#http-与-https-有哪些区别" aria-hidden="true">#</a> HTTP 与 HTTPS 有哪些区别？</h3>
 <ul>
 <li>HTTP 是超文本传输协议，信息是明文传输，存在安全风险的问题。HTTPS 则解决 HTTP 不安全的缺陷，在 TCP 和 HTTP 网络层之间加入了 SSL/TLS 安全协议，使得报文能够加密传输。</li>
@@ -101,6 +130,20 @@
 <li>并发传输</li>
 <li>服务器主动推送资源</li>
 </ul>
+<h4 id="如何对-http1-1-进行优化" tabindex="-1"><a class="header-anchor" href="#如何对-http1-1-进行优化" aria-hidden="true">#</a> 如何对 http1.1 进行优化</h4>
+<h5 id="尽可能避免发送请求-减少请求的发送数量" tabindex="-1"><a class="header-anchor" href="#尽可能避免发送请求-减少请求的发送数量" aria-hidden="true">#</a> 尽可能避免发送请求（减少请求的发送数量）</h5>
+<ol>
+<li>使用 http 缓存，强缓存协商缓存</li>
+<li>将多个资源合并成一个资源进行发送（网易云音乐首页，各大网站的首页数据），精灵图技术</li>
+<li>按需访问资源，只加载用户看到的资源。图片懒加载，路由懒加载</li>
+</ol>
+<h5 id="对资源进行压缩-降低传输资源的大小-提高传输效率" tabindex="-1"><a class="header-anchor" href="#对资源进行压缩-降低传输资源的大小-提高传输效率" aria-hidden="true">#</a> 对资源进行压缩，降低传输资源的大小，提高传输效率</h5>
+<p>一般压缩的方式有两种</p>
+<p>有损压缩和无损压缩</p>
+<p>无损压缩一般都用 gzip 压缩，压缩的资源会通过响应头的字段 content-encoding 告诉客户端该资源经过了压缩</p>
+<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>content-encoding: gzip
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>有损压缩</p>
+<p>有损压缩一般用在媒体资源，如图片、音乐、视频</p>
 <h2 id="tcp-udp" tabindex="-1"><a class="header-anchor" href="#tcp-udp" aria-hidden="true">#</a> TCP UDP</h2>
 <h3 id="tcp-ip-协议" tabindex="-1"><a class="header-anchor" href="#tcp-ip-协议" aria-hidden="true">#</a> tcp/ip 协议</h3>
 <p>由于 TCP 是面向连接，能保证数据的可靠性交付，因此经常用于：</p>
@@ -118,12 +161,46 @@
 <p>TCP 使用三次握手建立连接的<strong>最主要原因就是防止「历史连接」初始化了连接</strong>。</p>
 <h2 id="网络安全" tabindex="-1"><a class="header-anchor" href="#网络安全" aria-hidden="true">#</a> 网络安全</h2>
 <h3 id="xss-攻击" tabindex="-1"><a class="header-anchor" href="#xss-攻击" aria-hidden="true">#</a> XSS 攻击</h3>
+<p>分为三种类型分别是</p>
+<h4 id="反射型" tabindex="-1"><a class="header-anchor" href="#反射型" aria-hidden="true">#</a> 反射型</h4>
+<p>反射型需要服务器有对应接口配合
+在一个表单中输入恶意代码，通常这段代码就是一个 html 标签，给这个标签的属性或者事件添加一些读取用户数据的代码
+，提交表单，通过接口将这段标签作为参数交给服务器，服务器接受到以后获取请求参数的时候，然后回对这段单吗进行一个解析，
+在请求 url 中嵌入恶意代码，服务器接受到以后，</p>
+<h4 id="存储型" tabindex="-1"><a class="header-anchor" href="#存储型" aria-hidden="true">#</a> 存储型</h4>
+<p>存储型就是，在表单中输入恶意的代码，提交到服务器中，服务器在接受到用户请求后，将其作为 html 代码进行解析，执行当中的 js 代码
+一般需要对表单输入内容进行转义</p>
+<h4 id="xss-的危害" tabindex="-1"><a class="header-anchor" href="#xss-的危害" aria-hidden="true">#</a> XSS 的危害</h4>
+<ol>
+<li>可以利用 xss 对页面结构进行破坏</li>
+<li>获取用户 cookie</li>
+<li>流量劫持，将用户网页定位其他网页</li>
+<li>dos 攻击，对服务器发起大量请求，占用服务器资源，使服务器无法响应用户请求</li>
+</ol>
+<h4 id="xss-防御手段" tabindex="-1"><a class="header-anchor" href="#xss-防御手段" aria-hidden="true">#</a> XSS 防御手段</h4>
+<ol>
+<li>对 cookies 设置 httponly，使其不能通过 document.cookie 进行获取</li>
+<li>对用户的输入进行转义，利用第三方库对用户的输入内容进行编码和解码</li>
+<li>对用户输入的 dom 属性和事件进行过滤，如 script 标签和 onerror 事件</li>
+</ol>
+<h4 id="dom-型" tabindex="-1"><a class="header-anchor" href="#dom-型" aria-hidden="true">#</a> dom 型</h4>
 <p>跨站脚本攻击，发生在目标用户的浏览器，渲染 DOM 树的过程成发生了不在预期内执行的 JS 代码。</p>
 <h3 id="csrf-攻击" tabindex="-1"><a class="header-anchor" href="#csrf-攻击" aria-hidden="true">#</a> CSRF 攻击</h3>
 <p>跨站请求伪造
 利用用户身份，执行非用户本意的操作
+用户登录了第三方网站后，用户又访问了恶意网站
+恶意网站动态生成生成 img，iframe，script 标签，在 src 属性中注入一些恶意代码，向第三方网站发送恶意请求
 eg：
-有一个网站 a 和恶意网站 b，用户点击了恶意网站的链接，在恶意网站中动态生成了 img、iframe、script 标签，使 src 为</p>
-</div></template>
+有一个网站 a 和恶意网站 b，用户登录 a 以后又进入了恶意网站 b，恶意网站中动态生成了 img、iframe、script 标签，使 src 的值为
+a 网站某个接口的 url</p>
+<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>从A网站发送的请求 请求头referer字段是a网站
+GET /blog/del?id=1 HTTP/1.1
+Host: www.a.com
+* Referer: http://www.a.com/blog/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>从B网站发送的请求 请求头referer字段是b网站
+GET /blog/del?id=1 HTTP/1.1
+Host: www.a.com
+* Referer: http://www.b.com/csrf.html
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 
