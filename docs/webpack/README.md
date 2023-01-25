@@ -8,8 +8,9 @@
 
 ## loader
 
-loader 本质上是一个函数,处理多种文件格式 它可以将某种格式的文件转换成 Wwebpack 支持打包的模块
 
+loader 本质上是一个函数,处理多种文件格式 它可以将某种格式的文件转换成 Wwebpack 支持打包的模块
+ 
 ### babel-loader
 
 将高级语法(主要是 ECMAScript 2015+ )编译成浏览器支持的低版本语法
@@ -19,6 +20,7 @@ loader 本质上是一个函数,处理多种文件格式 它可以将某种格�
 ### style-loader
 
 ### css-loader
+
 
 ### ts-loader
 
@@ -51,3 +53,4 @@ loader 本质上是一个函数,处理多种文件格式 它可以将某种格�
 ### html-webpack-plugin
 
 ### mini-css-extract-plugin
+

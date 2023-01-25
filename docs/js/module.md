@@ -16,21 +16,37 @@
 专门为浏览器、设计了另一种模块化规范 AMD（async modules definition），后来又出现了 CMD，CMD 简化了 AMD，
 最终 ES6 的模块化成为了浏览器最终的模块化方案，在 nodejs 使用 cjs
 
-## commjs 如何封装私有变量
+## 模块化的问题
+
+模块文件过多，会导致网络请求频繁
+
+只将初次运行必须的模块打包到一起，其他文件在需要使用的时候在请求服务器获取
+
+## commjs
+
+本质是将我们的 js 代码封装成一个函数，通过参数的方式提供 require module exports \_filename \_dirname 等内置变量
+
+### commjs 如何封装私有变量
 
 导出的时候只导出一个对象，设置要导出变量的 get 属性访问器和操作值的函数
 
 ## esm
 
-1. 模块内部默认使用严格模式，所以 this 为默认为 undefined
+1. 模块内部默认使用**严格模式**，所以 this 为默认为 undefined
 2. 每个模块都有独立作用域
 3. 需要服务器支持 cors
 4. 默认 defer 延迟执行
+
+esm 可以在 node 中运行
+
+1. 可以在命令中加入 experimental
+2. 也可以在 package.json 中指定 type 为 module，使用 cjs 的时候将文件名后缀改为 cjs
 
 ## cjs 和 esm 的区别
 
 1. Commonjs 是拷贝输出（原模块的基本数据类型值改变，不会影响引入的值，引用类型会），ES6 模块化是引用输出（动态只读引用）
 2. Commonjs 是运行时加载，ES6 模块化是编译时输出接口
-3. Commonjs 是单个值导出，ES6 模块化可以多个值导出
+3. Commonjs 只有默认导出，ES6 模块化可以多个值导出也能默认导出
 4. Commonjs 是动态语法可写在函数体中，ES6 模块化静态语法只能写在顶层
 5. Commonjs 的 this 是当前模块化，ES6 模块化的 this 是 undefined
+6. cjs 不能用 require 引入 esm，esm 可以使用 import 引入 cjs

@@ -6,20 +6,18 @@
   </head>
   <body>
     <script>
-      class Person {
-        #dc = 888
-        #aa
-        constructor(arg) {
-          console.log(this.#aa)
-          console.log(this.#dc)
-          this.dc = arg
+      function debounce(fn, delay) {
+        let to
+        return function () {
+          if (to) {
+            window.clearTimeout(to)
+          }
+
+          to = setTimeout(() => {
+            fn()
+          }, delay)
         }
       }
-
-      const p1 = new Person(666)
-      const p2 = new Person()
-      console.log(p1['#dc'])
-      console.log(p2['#dc'])
     </script>
   </body>
 </html>

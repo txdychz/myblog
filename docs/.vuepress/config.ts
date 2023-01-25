@@ -8,6 +8,10 @@ export default defineUserConfig({
     navbar: [
       {
         link: '/',
+        text: '每日总结',
+      },
+      {
+        link: '/net',
         text: '计算机网络',
       },
       {
@@ -24,13 +28,15 @@ export default defineUserConfig({
         link: '/react',
         text: 'react笔记',
       },
+
       {
-        link: '/note',
-        text: '技术随笔',
-      },
-      {
-        link: '/webpack',
-        text: 'webpack笔记',
+        text: '构建工具',
+        children: [
+          '/cli/webpack.md',
+          '/cli/vite.md',
+          '/cli/vue-cli.md',
+          '/cli/react-cli.md',
+        ],
       },
       {
         link: '/ts',
@@ -53,6 +59,10 @@ export default defineUserConfig({
         link: '/designPattern',
         text: '设计模式',
       },
+      {
+        link:'/cookie',
+        text:'知识甜点'
+      }
     ],
   }),
 })
