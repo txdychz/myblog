@@ -83,7 +83,7 @@ promise是js异步编程的api，promise有pending，fullfill，rejected三种�
 
 #### Promise.AllSettled
 
-
+接收promise数组，当所有promise都执行完以后返回所有promise的结果
 
 ## Map
 
@@ -95,16 +95,16 @@ map是es6新增的数据结构，以键值对的方式操作数据，
 
 ### 和object的区别
 
-object只能用字符串或symbol作为键，键的顺序是随机的，map则可以使用任意类型作为键，键的顺序是确定的
+object只能用字符串或symbol作为键，键的顺序是随机的，map则可以使用任意类型作为键，键的顺序是确定的（Map是有序的）
 
 ### API
 
 ```
- get(k)//获取键的值
+get(k)//获取键的值
 
- set(k,v)//添加键值对
+set(k,v)//添加键值对
 
- has()  //判断键是否存在
+has()  //判断键是否存在
 
 size  //获取长度
 
@@ -117,5 +117,70 @@ keys()  //获取键的迭代器
 entries  //获取键值对迭代器
 
 values  //获取值的迭代器
+
+forEAch() //遍历
 ```
 
+
+
+
+
+### Map和object优劣
+
+在查找速度上object更快
+
+Map内存利用率更高，插入性能更好，删除性能也更好
+
+
+
+## Set
+
+### 什么是Set
+
+Set是es6新出的一种有序集合类型，通过new构造函数创建set对象。并且集合元素具有唯一性 
+
+### Api
+
+```
+Set.prototype.add()
+
+Set.prototype.clear()
+
+Set.prototype.delete()
+
+Set.prototype.entries()
+
+Set.prototype.forEach()
+
+Set.prototype.has()
+
+Set.prototype.keys()
+
+Set.prototype.values()
+```
+
+
+
+## 扩展运算符
+
+#### 对象扩展
+
+#### 数组扩展
+
+## 剩余参数
+
+用来代替arguments的
+
+```
+function fn(...arg){
+ 
+}
+```
+
+## Symbol
+
+基本数据类型
+
+## bigInt
+
+基本数据类型，数值较大的整数

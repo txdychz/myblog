@@ -47,17 +47,18 @@ console.log(p.age)   //undefinded
 <h4 id="promise-race" tabindex="-1"><a class="header-anchor" href="#promise-race" aria-hidden="true">#</a> Promise.race</h4>
 <p>接受promise数组，返回的promise状态为promise数组最先完成状态</p>
 <h4 id="promise-allsettled" tabindex="-1"><a class="header-anchor" href="#promise-allsettled" aria-hidden="true">#</a> Promise.AllSettled</h4>
+<p>接收promise数组，当所有promise都执行完以后返回所有promise的结果</p>
 <h2 id="map" tabindex="-1"><a class="header-anchor" href="#map" aria-hidden="true">#</a> Map</h2>
 <h3 id="什么是map" tabindex="-1"><a class="header-anchor" href="#什么是map" aria-hidden="true">#</a> 什么是Map</h3>
 <p>map是es6新增的数据结构，以键值对的方式操作数据，</p>
 <h3 id="和object的区别" tabindex="-1"><a class="header-anchor" href="#和object的区别" aria-hidden="true">#</a> 和object的区别</h3>
-<p>object只能用字符串或symbol作为键，键的顺序是随机的，map则可以使用任意类型作为键，键的顺序是确定的</p>
+<p>object只能用字符串或symbol作为键，键的顺序是随机的，map则可以使用任意类型作为键，键的顺序是确定的（Map是有序的）</p>
 <h3 id="api" tabindex="-1"><a class="header-anchor" href="#api" aria-hidden="true">#</a> API</h3>
-<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code> get(k)//获取键的值
+<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>get(k)//获取键的值
 
- set(k,v)//添加键值对
+set(k,v)//添加键值对
 
- has()  //判断键是否存在
+has()  //判断键是否存在
 
 size  //获取长度
 
@@ -70,6 +71,42 @@ keys()  //获取键的迭代器
 entries  //获取键值对迭代器
 
 values  //获取值的迭代器
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+
+forEAch() //遍历
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="map和object优劣" tabindex="-1"><a class="header-anchor" href="#map和object优劣" aria-hidden="true">#</a> Map和object优劣</h3>
+<p>在查找速度上object更快</p>
+<p>Map内存利用率更高，插入性能更好，删除性能也更好</p>
+<h2 id="set" tabindex="-1"><a class="header-anchor" href="#set" aria-hidden="true">#</a> Set</h2>
+<h3 id="什么是set" tabindex="-1"><a class="header-anchor" href="#什么是set" aria-hidden="true">#</a> 什么是Set</h3>
+<p>Set是es6新出的一种有序集合类型，通过new构造函数创建set对象。并且集合元素具有唯一性</p>
+<h3 id="api-1" tabindex="-1"><a class="header-anchor" href="#api-1" aria-hidden="true">#</a> Api</h3>
+<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>Set.prototype.add()
+
+Set.prototype.clear()
+
+Set.prototype.delete()
+
+Set.prototype.entries()
+
+Set.prototype.forEach()
+
+Set.prototype.has()
+
+Set.prototype.keys()
+
+Set.prototype.values()
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="扩展运算符" tabindex="-1"><a class="header-anchor" href="#扩展运算符" aria-hidden="true">#</a> 扩展运算符</h2>
+<h4 id="对象扩展" tabindex="-1"><a class="header-anchor" href="#对象扩展" aria-hidden="true">#</a> 对象扩展</h4>
+<h4 id="数组扩展" tabindex="-1"><a class="header-anchor" href="#数组扩展" aria-hidden="true">#</a> 数组扩展</h4>
+<h2 id="剩余参数" tabindex="-1"><a class="header-anchor" href="#剩余参数" aria-hidden="true">#</a> 剩余参数</h2>
+<p>用来代替arguments的</p>
+<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>function fn(...arg){
+ 
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="symbol" tabindex="-1"><a class="header-anchor" href="#symbol" aria-hidden="true">#</a> Symbol</h2>
+<p>基本数据类型</p>
+<h2 id="bigint" tabindex="-1"><a class="header-anchor" href="#bigint" aria-hidden="true">#</a> bigInt</h2>
+<p>基本数据类型，数值较大的整数</p>
+</div></template>
 
 

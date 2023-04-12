@@ -1,5 +1,55 @@
 # CSS
 
+## Less
+
+### 定义变量
+
+**定义** @变量名
+
+```
+@arg: xxx
+
+sel{
+ xxxx:@arg
+}
+```
+
+### 嵌套语法
+
+懂得都懂
+
+### 混入mixin
+
+```
+sel(){
+  xxxx: xxxx;
+}
+
+xxxx{
+
+	sel();
+
+}
+
+```
+
+
+
+## Sass
+
+### 变量
+
+```
+$arg:xxxx
+
+sel {
+	xxx： arg；
+
+}
+```
+
+
+
 ## flex 布局
 
 设置了 display 为 flex 的元素称为 flex 容器，其所有子元素为项目

@@ -56,10 +56,14 @@ cancel();
 
 删除 type:'index'，自己实现排序
 
+```
 render:(h,params)=>{
 
-h('div', params+1)
+	h('div', params+1)
 }
+```
+
+
 
 ### iview 组件库导出 Excel 问题
 
@@ -91,4 +95,190 @@ eta http-equiv="refresh" content="5;url=http://www.baidu.com" />
 
 使用iframe内嵌微信的登录页面，src的值为后端给的微信登录url
 
-![](D:\Blog\myblog\docs\.vuepress\public\images\2023-01-26_02-29-56.jpg)
+![](/images/2023-01-26_02-29-56.jpg)
+
+
+
+### 使用nvm切换node版本
+
+
+
+下载前需要将之前的node卸载干净。
+
+
+
+### Vue.config.errorHandler 怎么将错误暴露到 window.error 事件
+
+可以在 Vue.config.errorHandler 中使用 window.dispatchEvent 方法来触发一个 "error" 事件，将错误对象作为参数传入。
+
+```
+Vue.config.errorHandler = function(err, vm, info) {
+  window.dispatchEvent(new CustomEvent("error", { detail: err }));
+};
+```
+
+然后在全局监听这个 error 事件
+
+```
+window.addEventListener("error", function(e) {
+  console.log("Error: ", e.detail);
+});
+```
+
+使用 Vue.config.errorHandler 来捕获错误时，会绕过 vue 的错误捕获机制，所以需要在这里重新实现对错误的处理
+
+
+
+### 判断字符串的长度（包括表情）
+
+可以使用 JavaScript 中的字符串方法 `length` 判断字符串长度。
+
+但是，这种方法不能准确地统计表情字符的长度。因为表情字符通常由多个 Unicode 字符组成，而 `length` 方法只能统计单个字符的个数。
+
+为了统计包括表情在内的字符串长度，可以使用**正则表达式**或其他**第三方库**string-width来计算。
+
+```
+
+```
+
+
+
+## 2022 第三周
+
+### 1.html（或当前页面部分内容）转PDF
+
+html生成PDF有三种方案
+
+
+
+1.前端截图 后端排版
+
+2.前端截图 前端排版
+
+先用html2Canvas将html文档转为canvas，再用
+
+3.后端截图 后端排版
+
+后端的事！
+
+
+
+#### 2.前端解决方案
+
+利用**html2Canvas**和**jspdf**库
+
+以Vue2为例
+
+```
+//大小为A4纸
+import html2Canvas from 'html2canvas'
+import JsPDF from 'jspdf'
+export default {
+    install(Vue, option) {
+        Vue.prototype.htmlToCanvas = async (selector, title) => {
+            console.log(selector)
+            let element = selector
+            if (typeof selector == 'string') {
+                element = document.querySelector(selector)
+            }
+            // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+
+            const canvas = await html2Canvas(element)
+            const PDF = new JsPDF('', 'pt', 'a4')
+            const DataURL = canvas.toDataURL('image/jpeg', 1.0)
+            const [w, h] = [canvas.width, canvas.height]
+
+            const imgWidth = 595.28
+            const imgHeight = (592.28 / w) * h
+            console.log(w, h)
+            PDF.addImage(DataURL, 'JPEG', 0, 0, imgWidth, imgHeight)
+            PDF.save(title + '.pdf')
+            return [canvas, DataURL]
+        }
+    },
+}
+
+```
+
+
+
+### 动态表单配置中心
+
+也不能说做的多好吧
+
+但是做完这个项目觉得自己会有所提升，后续项目结束的时候对它作一些复盘和总结，觉得自己有了一点点的小进步吧
+
+有接到一个需求，前台项目的需求是左边是一个三级，右边是一整个大的表单，通过左边可以导航到不同的表单。
+
+然后我记得一级菜单就有5、6个（行政、人事、财务），每个一级菜单都有4-6个二级菜单。
+
+如果每一个表单都独立开发一个组件。那就要写30多个。那就有点amazing
+
+这个通用表单配置中心是用来生成客户产品所对应的表单配置对象，
+
+首先我们把表单抽象成一个对象，然后再把它的每一行也抽象成一个对象并保存到一个数组。。
+
+首先要考虑生成表单项的基本参数：表单类型、表单(对应数据库)的字段、标题label、占位placeholder、长度
+
+额外参数：输入类型、
+
+关于表单校验的问题（）
+
+1每个表单项对象都有一个属性存储校验规则
+
+
+
+1如何将自定义校验函数保存为JSON对象
+
+要校验是否为必填，可以直接通过一个状态来控制，但是有些数据的校验需要通过函数去实现的，需要保存到配置对象当中。
+
+因为我们创建表单的配置对象以后要发请求给后端保存到数据库里，就要考虑JS对象转化为JSON。但是在对象转化为JSON的时候，不会处理函数，导致函数丢失变成undefined。
+
+所以就要考虑怎么把函数存到数据库里
+
+就是用
+
+2 使用门槛 用户操作用户体验问题
+
+这个系统面向客户，可能操作人员没有编程相关的知识，如果让他们写校验函数的话，这个使用门槛就会比较高。
+
+所以我们还是要降低门槛
+
+### 后端解决方案 node
+
+```
+
+```
+
+## Element plus
+
+
+
+## Dialog右上角关闭后无法打开
+
+将Dialog封装到组件里，通过父组件控制Dialog的显示。右上角关闭后无法再次打开
+
+**原因：**右上角关闭后，不论父组件的flag是否为true都会直接销毁Dialog组件，而父组件的值仍然为true，点击显示Dialog将数据变为true，不会触发页面更新。需要在关闭前的回调手动将父组件的数据设置为false
+
+
+
+```
+//Dialog组件
+  <el-dialog
+        v-model="prop.testData"
+        title="Shipping address"
+        :before-close="closeDialog">
+  </el-dialog>
+  
+  function closeDialog(done) {
+    //关闭表单的函数
+    emit('closeDialog')
+    done()
+}
+```
+
+## Vue
+
+
+
+虽然create中真实dom还没有挂载，但在create函数中也可以通过nexttick或者其他异步方式获取dom。

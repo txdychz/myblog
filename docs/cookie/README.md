@@ -40,6 +40,20 @@ SPA（Single-Page-Application），即单页面应用，将网站的所有内容
 
 动态修改页面内容
 
+
+
+**跳转页面**
+
+```
+history.back(): 返回浏览器会话历史中的上一页，跟浏览器的回退按钮功能相同
+history.forward():指向浏览器会话历史中的下一页，跟浏览器的前进按钮相同
+history.go(): 可以跳转到浏览器会话历史中的指定的某一个记录页
+history.pushState()可以将给定的数据压入到浏览器会话历史栈中，该方法接收3个参数，对象，title和一串url。pushState后会改变当前页面url
+history.replaceState()将当前的会话页面的url替换成指定的数据，replaceState后也会改变当前页面的url
+```
+
+
+
 ### SPA如何做SEO
 
 #### SSR服务端渲染

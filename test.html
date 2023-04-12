@@ -1,23 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>test</title>
-  </head>
-  <body>
-    <script>
-      function debounce(fn, delay) {
-        let to
-        return function () {
-          if (to) {
-            window.clearTimeout(to)
-          }
+    <head>
+        <meta charset="UTF-8" />
+        <title>test</title>
+    </head>
+    <body>
+        <script>
+            let activeEffect
 
-          to = setTimeout(() => {
-            fn()
-          }, delay)
-        }
-      }
-    </script>
-  </body>
+            let effect = fun => {
+                activeEffect = fun
+                activeEffect()
+
+                activeEffect = null
+            }
+            let targetMap = new WeakMap()
+
+            function track(target, key) {
+                let map = targetMap.get(target)
+                if (!map) {
+                    targetMap.set(target, (map = new Map()))
+                }
+                let set = map.get(key)
+                if (!set) {
+                    map.set(key, (set = new Set()))
+                }
+                set.add(activeEffect)
+            }
+
+            function trigger(target, key) {
+                let map = targetMap.get(target)
+
+                if (!map) return
+                let set = map.get(key)
+
+                set.forEach(cb => {
+                    cb()
+                })
+            }
+
+            function reactive(target) {
+                let proxy = new Proxy(target, {
+                    get(target, key, receiver) {
+                        let result = Reflect.get(target, key, receiver)
+                        track(target, key)
+                        return result
+                    },
+                    set(target, key, value, receiver) {
+                        const result = Reflect.set(target, key, receiver)
+                        trigger(target, key)
+
+                        return result
+                    },
+                })
+            }
+
+            const obj = reactive({
+                name: '张宝源',
+                age: 3,
+            })
+        </script>
+    </body>
 </html>

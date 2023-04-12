@@ -1,7 +1,7 @@
 <template><div><p>虽然没有什么用处，但是要说的上来</p>
 <h2 id="spa" tabindex="-1"><a class="header-anchor" href="#spa" aria-hidden="true">#</a> SPA</h2>
 <h3 id="什么是spa" tabindex="-1"><a class="header-anchor" href="#什么是spa" aria-hidden="true">#</a> 什么是SPA</h3>
-<p>SPA（Single-Page-Application），即单页面应用，将网站的所有内容都放在一个页面，通过路由去控制页面显示的内容，页面内容加载完成以后，用户进行页面的跳转的时候，无需向服务器请求新的网页，进行网站的局部刷新。</p>
+<p>SPA（Single-Page-Application），即单页面应用，将网站的所有内容都放在一个页面，通过路由去控制页面显示的内容，页面内容加载完成以后，用户进行页面的跳转的时候，无需向服务器请求新的网页，进行网站的局部刷新。前端页面跳转的路由开始由前端控制，以此来减少请求，同时避免了浏览器的刷新。</p>
 <h3 id="spa优点" tabindex="-1"><a class="header-anchor" href="#spa优点" aria-hidden="true">#</a> SPA优点</h3>
 <p>页面跳转无需发送请求，页面之间跳转相对更快 ，用户体验更好。减少服务器请求次数（页面跳转页面通信单页面应用都不需要发送请求），缓解服务器压力。</p>
 <h3 id="spa缺点" tabindex="-1"><a class="header-anchor" href="#spa缺点" aria-hidden="true">#</a> SPA缺点</h3>
@@ -19,10 +19,17 @@
 </ul>
 <p>通过监听window.popState事件，监听history变化</p>
 <p>动态修改页面内容</p>
-<h3 id="spa如何做seo" tabindex="-1"><a class="header-anchor" href="#spa如何做seo" aria-hidden="true">#</a> SPA如何做SEO</h3>
+<p><strong>跳转页面</strong></p>
+<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>history.back(): 返回浏览器会话历史中的上一页，跟浏览器的回退按钮功能相同
+history.forward():指向浏览器会话历史中的下一页，跟浏览器的前进按钮相同
+history.go(): 可以跳转到浏览器会话历史中的指定的某一个记录页
+history.pushState()可以将给定的数据压入到浏览器会话历史栈中，该方法接收3个参数，对象，title和一串url。pushState后会改变当前页面url
+history.replaceState()将当前的会话页面的url替换成指定的数据，replaceState后也会改变当前页面的url
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="spa如何做seo" tabindex="-1"><a class="header-anchor" href="#spa如何做seo" aria-hidden="true">#</a> SPA如何做SEO</h3>
 <h4 id="ssr服务端渲染" tabindex="-1"><a class="header-anchor" href="#ssr服务端渲染" aria-hidden="true">#</a> SSR服务端渲染</h4>
 <p>将组件或页面通过服务器生成html，再返回给浏览器，如<code v-pre>nuxt.js</code></p>
 <h4 id="静态化" tabindex="-1"><a class="header-anchor" href="#静态化" aria-hidden="true">#</a> 静态化</h4>
+<h2 id="" tabindex="-1"><a class="header-anchor" href="#" aria-hidden="true">#</a> </h2>
 </div></template>
 
 
