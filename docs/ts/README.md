@@ -93,6 +93,28 @@ class Person {
 
 ## 模块声明
 
+1,项目引入第三方库需要添加类型声明文件
+
+```
+npm i @types/xxxx -D
+```
+
+2.或者手动添加
+
+
+
+```typescript
+/types/xxxx.d.ts
+declare module 'xxxx' {
+    const content : any
+
+    
+   export = content
+}
+```
+
+
+
 让vue3支持this.xxx，并支持类型推断
 
 ```

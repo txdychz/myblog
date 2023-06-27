@@ -56,7 +56,17 @@ class Person {
 }
 
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="模块声明" tabindex="-1"><a class="header-anchor" href="#模块声明" aria-hidden="true">#</a> 模块声明</h2>
-<p>让vue3支持this.xxx，并支持类型推断</p>
+<p>1,项目引入第三方库需要添加类型声明文件</p>
+<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>npm i @types/xxxx -D
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>2.或者手动添加</p>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><pre v-pre class="language-typescript"><code><span class="token operator">/</span>types<span class="token operator">/</span>xxxx<span class="token punctuation">.</span>d<span class="token punctuation">.</span>ts
+<span class="token keyword">declare</span> <span class="token keyword">module</span> <span class="token string">'xxxx'</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> content <span class="token operator">:</span> <span class="token builtin">any</span>
+
+    
+   <span class="token keyword">export</span> <span class="token operator">=</span> content
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>让vue3支持this.xxx，并支持类型推断</p>
 <div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>// main.ts
 app.config.globalProperties.$axios = axios;
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>// global.d.ts

@@ -21,13 +21,23 @@
 <p>利用 with 关键字传入目标对象
 with 内部代码的变量会从对象中查找</p>
 <h2 id="事件循环eventloop" tabindex="-1"><a class="header-anchor" href="#事件循环eventloop" aria-hidden="true">#</a> 事件循环eventLoop</h2>
+<h3 id="js的特点" tabindex="-1"><a class="header-anchor" href="#js的特点" aria-hidden="true">#</a> JS的特点</h3>
+<p><strong>同步 阻塞 单线程</strong></p>
 <h3 id="什么是事件循环" tabindex="-1"><a class="header-anchor" href="#什么是事件循环" aria-hidden="true">#</a> 什么是事件循环</h3>
 <p>因为js是单线程的嘛，所以需要借助浏览器或node处理异步任务，而事件循环就是处理js异步任务机制，</p>
-<p>具体的一个过程就是</p>
-<p>js引擎先执行所有的主线程代码，主线程代码执行完后，清空微任务队列里的微任务，执行ui渲染视图更新</p>
-<p>然后将宏任务队列里的第一个宏任务添加到作为主线程的代码执行，然后进行下一轮事件循环。</p>
 <p>事件循环分为浏览器的事件循环机制和node事件循环机制</p>
-<p>浏览器的事件循环机制就是</p>
+<h4 id="浏览器事件循环机制" tabindex="-1"><a class="header-anchor" href="#浏览器事件循环机制" aria-hidden="true">#</a> 浏览器事件循环机制</h4>
+<p>js引擎先执行所有的主线程代码，主线程代码执行完后，执行微任务队列里的微任务，执行ui渲染视图更新</p>
+<p>然后将宏任务队列里的第一个宏任务添加到作为主线程的代码执行，然后进行下一轮事件循环</p>
+<h4 id="node事件循环" tabindex="-1"><a class="header-anchor" href="#node事件循环" aria-hidden="true">#</a> node事件循环</h4>
+<p>四个过程  四个队列</p>
+<p>定时器队列</p>
+<p>I/O 队列</p>
+<p>setImmediate队列</p>
+<p>关闭队列</p>
+<p>两个微任务队列</p>
+<p>nextTick</p>
+<p>promise</p>
 <h2 id="执行上下文" tabindex="-1"><a class="header-anchor" href="#执行上下文" aria-hidden="true">#</a> 执行上下文</h2>
 <h3 id="什么是执行上下文" tabindex="-1"><a class="header-anchor" href="#什么是执行上下文" aria-hidden="true">#</a> 什么是执行上下文</h3>
 <p>执行上下文是指js代码的执行代码环境，当函数执行的时候，会生成该函数的执行上下文并推入执行栈当中。</p>

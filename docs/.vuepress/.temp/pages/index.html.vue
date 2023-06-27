@@ -80,6 +80,7 @@ eta http-equiv="refresh" content="5;url=http://www.baidu.com" />
 <p>先用html2Canvas将html文档转为canvas，再用</p>
 <p>3.后端截图 后端排版</p>
 <p>后端的事！</p>
+<h4 id="" tabindex="-1"><a class="header-anchor" href="#" aria-hidden="true">#</a> </h4>
 <h4 id="_2-前端解决方案" tabindex="-1"><a class="header-anchor" href="#_2-前端解决方案" aria-hidden="true">#</a> 2.前端解决方案</h4>
 <p>利用<strong>html2Canvas</strong>和<strong>jspdf</strong>库</p>
 <p>以Vue2为例</p>
@@ -111,7 +112,8 @@ export default {
     },
 }
 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="动态表单配置中心" tabindex="-1"><a class="header-anchor" href="#动态表单配置中心" aria-hidden="true">#</a> 动态表单配置中心</h3>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-后端解决方案-node" tabindex="-1"><a class="header-anchor" href="#_3-后端解决方案-node" aria-hidden="true">#</a> 3.后端解决方案 node</h4>
+<h3 id="动态表单配置中心" tabindex="-1"><a class="header-anchor" href="#动态表单配置中心" aria-hidden="true">#</a> 动态表单配置中心</h3>
 <p>也不能说做的多好吧</p>
 <p>但是做完这个项目觉得自己会有所提升，后续项目结束的时候对它作一些复盘和总结，觉得自己有了一点点的小进步吧</p>
 <p>有接到一个需求，前台项目的需求是左边是一个三级，右边是一整个大的表单，通过左边可以导航到不同的表单。</p>
@@ -131,9 +133,22 @@ export default {
 <p>2 使用门槛 用户操作用户体验问题</p>
 <p>这个系统面向客户，可能操作人员没有编程相关的知识，如果让他们写校验函数的话，这个使用门槛就会比较高。</p>
 <p>所以我们还是要降低门槛</p>
-<h3 id="后端解决方案-node" tabindex="-1"><a class="header-anchor" href="#后端解决方案-node" aria-hidden="true">#</a> 后端解决方案 node</h3>
+<h2 id="_2023-第一周" tabindex="-1"><a class="header-anchor" href="#_2023-第一周" aria-hidden="true">#</a> 2023 第一周</h2>
+<h3 id="_1-滚动日期选择框bug" tabindex="-1"><a class="header-anchor" href="#_1-滚动日期选择框bug" aria-hidden="true">#</a> 1 滚动日期选择框bug</h3>
+<p>滚动选择日期的时候，立刻确定，选择的日期为上一次选择的日期。</p>
+<p>原因：滚动还没结束或者滚动条还没停稳，滚动事件还没触发，选择框绑定的数据还未更新。</p>
+<p>解决:  在点击选择框的时候给确定按钮枷锁，滚动结束的时候再解锁。</p>
+<h5 id="plus" tabindex="-1"><a class="header-anchor" href="#plus" aria-hidden="true">#</a> plus</h5>
+<p>当滑动事件有多个的时候，快速的选择年和月，年和月同时上锁，但年解锁的时候，月还没更新。导致月的数据丢失。</p>
+<p>解决：使用debounce函数过滤多余的事件。</p>
+<h3 id="_2-移动端输入框和模拟下拉框bug" tabindex="-1"><a class="header-anchor" href="#_2-移动端输入框和模拟下拉框bug" aria-hidden="true">#</a> 2 移动端输入框和模拟下拉框bug</h3>
+<p>用一个底部弹窗模拟滚动选择框，在input标签被点击的时候显示这个组件，但会默认拉起手机的软键盘。</p>
+<p>解决：给input设置disabled</p>
 <div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="element-plus" tabindex="-1"><a class="header-anchor" href="#element-plus" aria-hidden="true">#</a> Element plus</h2>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-小程序发起微信支付-支付失败-并提示支付签名验证失败。" tabindex="-1"><a class="header-anchor" href="#_3-小程序发起微信支付-支付失败-并提示支付签名验证失败。" aria-hidden="true">#</a> 3 小程序发起微信支付，支付失败 并提示支付签名验证失败。</h3>
+<p>原因：后端生成的paySigin用的时间戳和前端发起支付的时间戳不一致。</p>
+<h2 id="element-plus" tabindex="-1"><a class="header-anchor" href="#element-plus" aria-hidden="true">#</a> Element plus</h2>
 <h2 id="dialog右上角关闭后无法打开" tabindex="-1"><a class="header-anchor" href="#dialog右上角关闭后无法打开" aria-hidden="true">#</a> Dialog右上角关闭后无法打开</h2>
 <p>将Dialog封装到组件里，通过父组件控制Dialog的显示。右上角关闭后无法再次打开</p>
 <p>**原因：**右上角关闭后，不论父组件的flag是否为true都会直接销毁Dialog组件，而父组件的值仍然为true，点击显示Dialog将数据变为true，不会触发页面更新。需要在关闭前的回调手动将父组件的数据设置为false</p>
@@ -151,6 +166,7 @@ export default {
 }
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="vue" tabindex="-1"><a class="header-anchor" href="#vue" aria-hidden="true">#</a> Vue</h2>
 <p>虽然create中真实dom还没有挂载，但在create函数中也可以通过nexttick或者其他异步方式获取dom。</p>
+<h2 id="-1" tabindex="-1"><a class="header-anchor" href="#-1" aria-hidden="true">#</a> </h2>
 </div></template>
 
 
