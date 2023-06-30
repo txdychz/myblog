@@ -65,10 +65,9 @@ flex-flow
 
 ### 项目属性
 
-flex-basis
+flex-basis 
 flex-shink
-flex-grow
-flex
+flex-grow 
 
 ## z-index 失效
 
@@ -81,6 +80,13 @@ z-index 属性在下列情况下会失效：
 ## 单行文本省略
 
 ```
-text-
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 ```
 
+
+
+## letter-spacing
+
+文字间隔

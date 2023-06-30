@@ -12,6 +12,10 @@
 
 复习、进修
 
+##### top it up/top up/top up sth
+
+加满...   充值
+
 ##### **on a mission**
 
 执行任务
@@ -33,6 +37,10 @@
 ## 单词
 
 #### D
+
+##### discount
+
+折扣
 
 #####  **dive **
 
