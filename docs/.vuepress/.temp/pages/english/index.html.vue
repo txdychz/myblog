@@ -5,6 +5,8 @@
 <p>将来某一天</p>
 <h5 id="refresher-on" tabindex="-1"><a class="header-anchor" href="#refresher-on" aria-hidden="true">#</a> refresher on</h5>
 <p>复习、进修</p>
+<h5 id="top-it-up-top-up-top-up-sth" tabindex="-1"><a class="header-anchor" href="#top-it-up-top-up-top-up-sth" aria-hidden="true">#</a> top it up/top up/top up sth</h5>
+<p>加满...   充值</p>
 <h5 id="on-a-mission" tabindex="-1"><a class="header-anchor" href="#on-a-mission" aria-hidden="true">#</a> <strong>on a mission</strong></h5>
 <p>执行任务</p>
 <h5 id="get-a-complete-picture-of" tabindex="-1"><a class="header-anchor" href="#get-a-complete-picture-of" aria-hidden="true">#</a> get a complete picture of</h5>
@@ -13,8 +15,18 @@
 <p>只要 、一....就</p>
 <h5 id="as-far-as" tabindex="-1"><a class="header-anchor" href="#as-far-as" aria-hidden="true">#</a> as far as</h5>
 <p>到...为止、只要</p>
+<h5 id="require-to" tabindex="-1"><a class="header-anchor" href="#require-to" aria-hidden="true">#</a> require to</h5>
+<p>要求 、需要</p>
 <h2 id="单词" tabindex="-1"><a class="header-anchor" href="#单词" aria-hidden="true">#</a> 单词</h2>
+<h4 id="c" tabindex="-1"><a class="header-anchor" href="#c" aria-hidden="true">#</a> C</h4>
+<h5 id="complex" tabindex="-1"><a class="header-anchor" href="#complex" aria-hidden="true">#</a> complex</h5>
+<p>复杂的</p>
+<h5 id="correlated" tabindex="-1"><a class="header-anchor" href="#correlated" aria-hidden="true">#</a> correlated</h5>
+<p>adj</p>
+<p>相互关联的</p>
 <h4 id="d" tabindex="-1"><a class="header-anchor" href="#d" aria-hidden="true">#</a> D</h4>
+<h5 id="discount" tabindex="-1"><a class="header-anchor" href="#discount" aria-hidden="true">#</a> discount</h5>
+<p>折扣</p>
 <h5 id="dive" tabindex="-1"><a class="header-anchor" href="#dive" aria-hidden="true">#</a> **dive **</h5>
 <p>潜水 俯冲</p>
 <h4 id="e" tabindex="-1"><a class="header-anchor" href="#e" aria-hidden="true">#</a> E</h4>
@@ -30,6 +42,9 @@
 <h4 id="n" tabindex="-1"><a class="header-anchor" href="#n" aria-hidden="true">#</a> N</h4>
 <h5 id="nature" tabindex="-1"><a class="header-anchor" href="#nature" aria-hidden="true">#</a> nature</h5>
 <p>自然</p>
+<h4 id="p" tabindex="-1"><a class="header-anchor" href="#p" aria-hidden="true">#</a> P</h4>
+<h5 id="poly" tabindex="-1"><a class="header-anchor" href="#poly" aria-hidden="true">#</a> Poly</h5>
+<p>策略</p>
 <h4 id="t" tabindex="-1"><a class="header-anchor" href="#t" aria-hidden="true">#</a> T</h4>
 <h5 id="timer" tabindex="-1"><a class="header-anchor" href="#timer" aria-hidden="true">#</a> timer</h5>
 <p>定时器</p>

@@ -40,8 +40,7 @@ flex-flow</p>
 <h3 id="项目属性" tabindex="-1"><a class="header-anchor" href="#项目属性" aria-hidden="true">#</a> 项目属性</h3>
 <p>flex-basis
 flex-shink
-flex-grow
-flex</p>
+flex-grow</p>
 <h2 id="z-index-失效" tabindex="-1"><a class="header-anchor" href="#z-index-失效" aria-hidden="true">#</a> z-index 失效</h2>
 <p>z-index 属性在下列情况下会失效：</p>
 <pre><code>父元素position为relative时，子元素的z-index失效。解决：父元素position改为absolute或static；
@@ -49,7 +48,11 @@ flex</p>
 元素在设置z-index的同时还设置了float浮动。解决：float去除，改为display：inline-block；
 </code></pre>
 <h2 id="单行文本省略" tabindex="-1"><a class="header-anchor" href="#单行文本省略" aria-hidden="true">#</a> 单行文本省略</h2>
-<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>text-
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></div></template>
+<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="letter-spacing" tabindex="-1"><a class="header-anchor" href="#letter-spacing" aria-hidden="true">#</a> letter-spacing</h2>
+<p>文字间隔</p>
+</div></template>
 
 
