@@ -136,3 +136,9 @@ declare module  '@vue/runtime-core' {
 }
 ```
 
+### for 循环中ts类型问题
+
+```
+
+```
+
