@@ -184,3 +184,11 @@ function fn(...arg){
 ## bigInt
 
 基本数据类型，数值较大的整数
+
+
+
+## WeakMap
+
+弱映射，weakMap的key只能为object，且当object没有被引用的情况下，weakMap对应的value会被释放
+
+## WeakSet

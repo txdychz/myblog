@@ -136,9 +136,25 @@ declare module  '@vue/runtime-core' {
 }
 ```
 
-### for 循环中ts类型问题
+### ts 泛型属性读取
+
+使用**keyof**关键字
 
 ```
+ del(target:T,key:keyof T){     
+        this.value = this.value.filter((e:T)=>{
+                e[key] == target[key]
+        })
+    }
+```
+
+### 对泛型进行约束
 
 ```
+<T extends Object> 
+```
+
+表示泛型是对象  只能在<>内定义
+
+
 
