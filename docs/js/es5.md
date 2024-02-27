@@ -127,7 +127,7 @@ es5 将变量对象分为词法环境和变量环境
 
 call bind apply
 
-## 原型
+## 原型 prototype
 
 ### 原型是什么
 
@@ -157,7 +157,7 @@ call bind apply
 
 ### 
 
-## 闭包
+## 闭包 
 
 ### 什么是闭包（what）
 
@@ -267,6 +267,27 @@ array表示一组有顺序的值，并可以随意操作数组元素，且长度
 
 
 
+## JSON 序列化
+
+
+
+```
+//序列化
+JSON.stringify(target,function)
+第二个参数可以是数组或函数
+在项目中的应用 url传参的时候
+
+
+
+
+//还原
+JSON.parse()
+```
+
+
+
+
+
 ### API
 
 ```
@@ -322,9 +343,9 @@ sort(fn(a,b))
 
 
 
-## 本地存储
+## 本地存储 
 
-### 
+
 
 |          | localstorage | sessionstorage   | cookies          |
 | -------- | ------------ | ---------------- | ---------------- |
@@ -336,8 +357,42 @@ sort(fn(a,b))
 
 
 
-### 
+## BOM
 
 
 
-### 
+### location
+
+```
+//跳转页面 h5也ok
+location.assign("https://www.mozilla.org");
+location = "https://www.mozilla.org";
+//重新加载
+location.reload();
+```
+
+
+
+### history
+
+
+
+
+
+## DOM
+
+
+
+### 正则表达式
+
+```js
+/^1([ab])$/
+```
+
+^开头
+
+$结尾
+
+()元组
+
+$1锚点

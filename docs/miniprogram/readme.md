@@ -1,4 +1,25 @@
+# 小程序修改radio默认样式
+
+```
+//
+radio .wx-radio-input.wx-radio-input-checked {
+  border-color: #0167ff !important;
+
+  background: #0167ff !important;
+}
+//在radio选择器后面添加 --后面是自身定义在radio标签上的类名
+radio.AForm--no .wx-radio-input.wx-radio-input-checked {
+  border-color: #FF4E4E !important;
+
+  background: #FF4E4E!important;
+}
+```
+
+
+
 ## 实现微信小程序预览图片
+
+1.普通预览
 
 ```
 wx.previewImage({
@@ -6,6 +27,14 @@ wx.previewImage({
       urls: imgList // 需要预览的图片http链接列表
     })
 ```
+
+2.长按图片预览
+
+```
+<image >
+```
+
+
 
 ## 实现小程序长按识别二维码
 
@@ -16,7 +45,7 @@ show-menu-by-longpress="{{true}}"
 
 
 
-## 小程序 按钮边框
+## 小程序 修改按钮边框
 
 ```
 button::after{

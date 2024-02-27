@@ -1,7 +1,5 @@
 # TypeScript
 
-## 知识点
-
 ### 类型注解
 
 不直接赋值 需要给变量后面添加类型注解
@@ -12,7 +10,9 @@
 
 
 
-## type（类型）
+## 语法
+
+### type（类型）
 
 定义类型别名
 
@@ -27,7 +27,7 @@ type 类型名 = {
 
 
 
-## interface（接口）
+### interface（接口）
 
 定义类型接口
 
@@ -93,7 +93,7 @@ class Person {
 
 ## 模块声明
 
-1,项目引入第三方库需要添加类型声明文件
+1.项目引入第三方库需要添加类型声明文件
 
 ```
 npm i @types/xxxx -D
@@ -136,9 +136,9 @@ declare module  '@vue/runtime-core' {
 }
 ```
 
-### ts 泛型属性读取
+### key of泛型属性读取
 
-使用**keyof**关键字
+使用**key of**关键字
 
 ```
  del(target:T,key:keyof T){     
@@ -148,13 +148,140 @@ declare module  '@vue/runtime-core' {
     }
 ```
 
-### 对泛型进行约束
+### extends 对泛型进行约束
 
 ```
 <T extends Object> 
 ```
 
-表示泛型是对象  只能在<>内定义
+表示泛型是对象  extends只能在<>内定义
 
 
+
+### 可选参数  
+
+```
+interface name {
+   arg?: function
+}
+```
+
+可选参数类型为函数的时候需要进行断言，否则调用会报错	
+
+```
+name.arg!()
+```
+
+### 类型断言
+
+
+
+```
+//使用as
+this.formData =  {} as T
+//使用<>
+<> this.formData
+区别 as用在赋值右侧 <>任意地方
+```
+
+
+
+### class
+
+```typescript
+class className {
+ private v  //定义私有变量
+
+}
+```
+
+
+
+### typeof
+
+根据已有对象创建该对象的类型，自动推断该对象属性的值类型，不推荐深层次的复杂类型
+
+```
+
+```
+
+### Omit
+
+从原有类型中去除指定属性生成新类型
+
+```
+
+interface UserObj {
+    readonly name: string; // readonly 只读属性 只能初始化定义 不能二次赋值
+    age: number;
+    id: number;
+    sex: 0 | 1;
+    address: string;
+    weight: number;
+}
+// 剔除省略自己不需要的
+type Person = Omit<UserObj , "number" | "sex"  | "address" | "weight">;
+//结果
+interface Person {
+    readonly name: string;
+    id: number;
+}
+```
+
+### Pick
+
+从已有类型中选取属性生成新类型
+
+```
+// 剔除省略自己不需要的
+type Person = Pick<UserObj , "number" | "sex"  | "address" | "weight">;
+//结果
+interface Person {
+    readonly name: string;
+    id: number;
+}
+```
+
+### Partial
+
+将原有对象的所有属性转为可选属性
+
+```
+
+
+```
+
+### Required 
+
+
+
+```
+
+```
+
+
+
+## 函数重载
+
+```typescript
+export function typeOf(target:any):string
+export function typeOf(target:number,typeString:string):boolean
+
+export function typeOf(target:any,typeString?:string):string|boolean{
+    let type = typeOf(target)
+    return typeString? type : type.indexOf(typeString as string)>-1
+}
+```
+
+
+
+
+
+# typescript遇到的问题
+
+
+
+![](C:\Users\byzha\Desktop\docs\myblog\docs\.vuepress\public\images\24.1.8-0.png)
+
+deepclone方法要求参数继承object，虽然上面已经判断了是对象，但是编辑器无法识别，手动添加& object即可
 

@@ -192,3 +192,13 @@ function fn(...arg){
 弱映射，weakMap的key只能为object，且当object没有被引用的情况下，weakMap对应的value会被释放
 
 ## WeakSet
+
+## Class
+
+```javascript
+class className {
+    #age //私有变量
+    name //普通变量
+}
+```
+

@@ -281,6 +281,28 @@ export default {
 
 
 
+## 2024 第一周
+
+### 1.冷知识
+
+将一个*二进制字符串*（例如，将字符串中的每一个字节都视为一个二进制数据字节）编码为 [Base64](https://developer.mozilla.org/zh-CN/docs/Glossary/Base64) 编码的 ASCII 字符串。
+
+```
+ const basicAuth = 'Basic ' + window.btoa(import.meta.env.VITE_OAUTH2_SOCIAL_CLIENT);
+ window.btoa  //byte to ascll 
+ window.atob  //ascll to byte 
+```
+
+### 2.页面引导库driver.js
+
+https://driverjs.com/
+
+## 3.文件预览库 [vue-office/pdf]
+
+
+
+
+
 ## Element plus
 
 
@@ -316,4 +338,3 @@ export default {
 
 
 
-## 
