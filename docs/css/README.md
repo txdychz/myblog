@@ -73,16 +73,52 @@ flex-grow
 
 z-index 属性在下列情况下会失效：
 
-    父元素position为relative时，子元素的z-index失效。解决：父元素position改为absolute或static；
-    元素没有设置position属性为非static属性。解决：设置该元素的position属性为relative，absolute或是fixed中的一种；
-    元素在设置z-index的同时还设置了float浮动。解决：float去除，改为display：inline-block；
+```css
+父元素position为relative时，子元素的z-index失效。解决：父元素position改为absolute或static；
+元素没有设置position属性为非static属性。解决：设置该元素的position属性为relative，absolute或是fixed中的一种；
+元素在设置z-index的同时还设置了float浮动。解决：float去除，改为display：inline-block；
+```
 
 ## 单行文本省略
 
-```
+```css
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+```
+
+## 多行文本省略
+
+```css
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+```
+
+## 标题前缀
+
+```css
+.title::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  background: rgba(0, 78, 162, 1);
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  width: 8rpx;
+}
+.title{
+  position: relative;
+  font-size: 32rpx;
+  padding-left: 16rpx;
+}
+.top {
+  font-weight: bold;
+padding: 40rpx 30rpx;
+}
 ```
 
 
@@ -90,3 +126,33 @@ z-index 属性在下列情况下会失效：
 ## letter-spacing
 
 文字间隔
+
+
+
+## 右箭头
+
+```css
+	.arrow-right1 {
+		position: relative;
+		width: 0;
+		height: 0;
+		top: 0;
+		left: 0rpx;/* 要变的*/
+		border-top: 15rpx solid transparent;
+		border-bottom: 15rpx solid transparent;
+		border-left: 20rpx solid #999999;
+		/* 要变的箭头颜色*/
+	}
+
+	.arrow-right::after {
+		content: "";
+		position: absolute;
+		top: -11.5rpx;
+		left: -20rpx;
+		border-top: 11rpx solid transparent;
+		border-bottom: 11rpx solid transparent;
+		border-left: 15rpx solid #28A2FF;	/* 盒子背景色，要变的*/
+
+	}
+```
+

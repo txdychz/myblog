@@ -65,3 +65,32 @@ button::after{
 
 ```
 
+## 小程序弹窗
+
+```
+<root-portal wx:if="{{show}}" enable="{{enable}}">
+  <view class="popup" bindtap="close">
+    <slot></slot>
+  </view>
+</root-portal>
+
+.popup {
+  position: fixed;
+  bottom: 0;
+ 
+  height: 100vh;
+  z-index: 5000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  /* height: 200px; */
+  background: rgba(51, 51, 51, 0.65);
+  opacity: 1;
+  transform: scale3d(1, 1, 1);
+  transition: all .2s ease-in;
+  pointer-events: auto;
+}
+```
+

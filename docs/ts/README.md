@@ -140,13 +140,21 @@ declare module  '@vue/runtime-core' {
 
 使用**key of**关键字
 
-```
+```typescript
  del(target:T,key:keyof T){     
         this.value = this.value.filter((e:T)=>{
                 e[key] == target[key]
         })
     }
 ```
+
+```typescript
+//解决对象字段索引
+let api = computed(()=> Api[apiPath.value as keyof typeof Api])
+//Api为某个类的实例
+```
+
+![1724375333868](C:\Users\byzha\AppData\Roaming\Typora\typora-user-images\1724375333868.png)
 
 ### extends 对泛型进行约束
 
