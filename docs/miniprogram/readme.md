@@ -94,3 +94,29 @@ button::after{
 }
 ```
 
+```
+canvas层级过高
+小程序的canvas层级优先级比较高，即使设置了绝对定位和z-index也无法覆盖canvas
+解决：使用cover-view原生组件作为父容器可以覆盖canvas.
+```
+
+```
+小程序npm配置
+在project.config.json配置新的配置项
+  "packNpmManually": true,
+    "packNpmRelationList":[
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "/miniprogram"
+      }
+    ],
+```
+
+## 企业微信/h5跳转小程序
+
+```
+其他渠道接入小程序
+生成明文链接
+weixin://dl/business/?appid=wx21b3bbca5bf594e3&path=pages/index/index
+```
+

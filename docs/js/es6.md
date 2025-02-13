@@ -202,3 +202,9 @@ class className {
 }
 ```
 
+## 箭头函数
+
+```
+箭头函数没有this，或者说只继承外部作用域的this，并且不会被apply.call.bind三个方法改变
+```
+
