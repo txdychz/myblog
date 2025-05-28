@@ -1,4 +1,4 @@
-Vue3
+# Vue3
 
 
 
@@ -72,24 +72,54 @@ treeshaking只加载用的api减少了打包体积，
 
 # API
 
-#### ref
+## ref
 
-##### 原理：
+### 原理：
 
 为对象添加一个名为value的get、set访问器，在get里收集依赖，在set里触发依赖。
 
-##### 描述：
+### 描述：
 
 接收一个变量/值，返回一个具有value属性的ref响应式对象。
 
 
 
-#### reactive
+## reactive
 
-##### 原理：
+### 原理：
 
 使用es6的proxy和reflect，劫持监视对象的get和set。当对象的属性被访问的时候，会被proxy的get函数捕捉，判断当前是否有effectactive函数**（一个全局变量，保存set的回调函数）**，有的话就执行track函数，当对象属性被修改时或者新增属性时，被set函数捕捉，
 
-##### 描述：
+### 描述：
 
 接受一个对象，返回一个是对象
+
+## ComponentCustomProperties
+
+```vue
+import { ComponentCustomProperties } from 'vue';
+import macro from "../src/macro/index"
+import func from "../src/lib/common/Function"
+import common from "../src/lib/common/index"
+declare module '@vue/runtime-core' {
+	interface ComponentCustomProperties {
+		$macro : typeof macro; // 这里填类型
+		$func : typeof func;
+		$common : typeof common
+	}
+}
+// 必须导出，才能在其他文件中使用
+export default ComponentCustomProperties;
+```
+
+## getCurrentInstance
+
+获取当前组件实例
+
+```
+获取当前组件实例的属性 getCurrentInstance().ctx.$props || getCurrentInstance().proxy
+触发组件的自定义事件 getCurrentInstance().ctx.$emit
+在生命周期钩子中使用：可以在组件的生命周期钩子中使用 getCurrentInstance() 来获取当前组件实例
+通过 ctx 访问的是真实的组件实例，而通过 proxy 访问的是一个代理对象，该代理对象可以在模板中直接使用
+```
+

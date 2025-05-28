@@ -182,14 +182,26 @@ name.arg!()
 
 ### 类型断言
 
-
+#### as
 
 ```
 //使用as
 this.formData =  {} as T
+```
+
+#### <>
+
+```
 //使用<>
 <> this.formData
 区别 as用在赋值右侧 <>任意地方
+```
+
+#### !
+
+```
+//非空断言
+let a = fun().something!
 ```
 
 
